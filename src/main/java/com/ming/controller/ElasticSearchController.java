@@ -70,8 +70,9 @@ public class ElasticSearchController {
     }
 
     @PutMapping("/book/novel")
-    public ResponseEntity update(@RequestParam(name = "id") String id, @RequestParam(name = "title") String title,
-                                 @RequestParam(name = "author") String author) {
+    public ResponseEntity update(@RequestParam(name = "id") String id,
+                                 @RequestParam(name = "title",required = false) String title,
+                                 @RequestParam(name = "author",required = false) String author) {
         UpdateRequest update = new UpdateRequest("book", "novel", id);
         try {
             XContentBuilder builder = XContentFactory.jsonBuilder().startObject();
